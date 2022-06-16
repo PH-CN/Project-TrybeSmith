@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ProductService from '../services/productsService';
+import ProductService from '../services/productService';
 
 class ProductController {
   constructor(private productService = new ProductService()) { }
