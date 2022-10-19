@@ -9,7 +9,9 @@ class UserService {
   }
 
   public async create(username: string, classe: string, level: number, password: string) {
-    await this.model.create(username, classe, level, password);
+    const newUser = await this.model.create(username, classe, level, password);
+
+    return newUser;
   }
 }
 

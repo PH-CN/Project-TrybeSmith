@@ -9,9 +9,9 @@ class UserController {
     const user = req.body;
     const { username, classe, level, password } = req.body;
 
-    await this.userService.create(username, classe, level, password);
+    const { insertId } = await this.userService.create(username, classe, level, password);
 
-    const token = generateToken(user);
+    const token = generateToken({ id: insertId, ...user });
 
     res.status(201).json({ token });
   };

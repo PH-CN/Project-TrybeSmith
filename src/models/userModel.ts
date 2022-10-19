@@ -8,9 +8,11 @@ class UserModel {
   }
   
   public async create(username: string, classe: string, level: number, password: string) {
-    await this.connection.execute<ResultSetHeader>(`
+    const [newUser] = await this.connection.execute<ResultSetHeader>(`
       INSERT INTO Trybesmith.Users (username, level, classe, password)
       VALUES (?, ?, ?, ?)`, [username, level, classe, password]);
+
+    return newUser;
   }
 }
 
